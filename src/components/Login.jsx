@@ -16,12 +16,12 @@ function Login() {
       password: data.password,
     };
     await axios
-      .post("http://localhost:5173/user/login", userInfo)
+      .post("http://localhost:4001/user/login", userInfo)
       .then((res) => {
         console.log(res.data);
         if (res.data) {
           toast.success("Loggedin Successfully");
-          document.getElementById("my_modal_3").showModal();
+          document.getElementById("my_modal_3").close();
           setTimeout(() => {
             window.location.reload();
             localStorage.setItem("Users", JSON.stringify(res.data.user));
@@ -45,7 +45,7 @@ function Login() {
             <Link
               to="/"
               className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-              onClick={() => document.getElementById("my_modal_3").showModal()}
+              onClick={() => document.getElementById("my_modal_3").close()}
             >
               ✕
             </Link>
